@@ -1,16 +1,12 @@
 import initialState from "./initiaState"
-import { INCREMENT, DECREMENT } from "./actionTypes";
+import { SET_PDF_FILES} from "./actionTypes";
 
 
 const reducer = (state = initialState, action) => {
     switch (action.type) {
-        case INCREMENT:
+        case SET_PDF_FILES:
             return {
-                ...state, initialValue: state.initialValue + 1
-            }
-        case DECREMENT:
-            return {
-                ...state, initialValue : state.initialValue - 1
+                ...state, pdfFiles: action.payload 
             }
 
         default:

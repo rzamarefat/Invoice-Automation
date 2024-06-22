@@ -1,14 +1,9 @@
-import {INCREMENT, DECREMENT} from './actionTypes'
+import {SET_PDF_FILES} from './actionTypes'
 
 
-export const Increment = () => {
+export const setPDFFiles = (files) => {
     return {
-        type: INCREMENT,
-    }
-}
-
-export const Decrement = () => {
-    return {
-        type: DECREMENT,
+        type: SET_PDF_FILES,
+        payload: files
     }
 }
