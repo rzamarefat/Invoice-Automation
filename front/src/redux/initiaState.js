@@ -1,5 +1,8 @@
 const initialState = {
     "pdfFiles": [],
+    "extractedData": [],
+    "headers": null,
+    "loaderState": false
 }
 
 

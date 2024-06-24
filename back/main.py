@@ -3,7 +3,9 @@ from fastapi.responses import JSONResponse, HTMLResponse
 import shutil
 from pathlib import Path
 from fastapi.middleware.cors import CORSMiddleware
+from BillExtractor import BillExtractor
 
+be = BillExtractor()
 
 app = FastAPI()
 
@@ -35,11 +37,16 @@ async def upload_pdf(file: UploadFile = File(...)):
         raise HTTPException(status_code=400, detail="Invalid file type. Only PDFs are allowed.")
     
     file_location = UPLOAD_DIR / file.filename
-
+    
     with open(file_location, "wb") as buffer:
         shutil.copyfileobj(file.file, buffer)
 
-    return JSONResponse(content={"filename": file.filename})
+    data = be._extract_data(file_location)
+
+    headers = list(data.keys())
+
+    print(headers)
+    return JSONResponse(content={"data": data, "headers": headers})
 
 if __name__ == "__main__":
     import uvicorn
