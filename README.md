@@ -3,7 +3,7 @@ This project is powered by LLMs (OpenAI GPT) for extracting useful information f
 ## Demo
 ## How to run
 
-1. backend
+1. back
 - Create a Python3 virtual env
 - Activate the environment creatred in the previous step
 - cd to back folder
