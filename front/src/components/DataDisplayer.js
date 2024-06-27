@@ -31,14 +31,12 @@ const PDFUploader = ({allData, headers}) => {
                                 <th>Comments</th>
                                 <th>Description</th>
                                 <th>Quantity</th>
+                                <th>Total</th>
+                                <th>UnitPrice</th>
                                 <th>SalesTax</th>
                                 <th>Shipping</th>
                                 <th>Subtotal</th>
-                                <th>Total</th>
                                 <th>TotalDue</th>
-                                <th>UnitPrice</th>
-
-
                             </tr>
                         </thead>
                         <tbody>
@@ -52,14 +50,37 @@ const PDFUploader = ({allData, headers}) => {
                                     <td>{d.shipTo.address}</td>
                                     <td>{d.shipTo.telephoneNo}</td>
                                     <td>{d.comments}</td>
-                                    <td>{d.description}</td>
-                                    <td>{d.quantity}</td>
+                                    
+
+                                    <td>
+                                        {d.description.map((item) => ( 
+                                            <p>{item}</p>    
+                                        ))}
+                                    </td>
+
+                                    <td>
+                                        {d.quantity.map((item) => ( 
+                                            <p>{item}</p>    
+                                        ))}
+                                    </td>
+                                    <td>
+                                        {d.total.map((item) => ( 
+                                            <p>{item}</p>    
+                                        ))}
+                                    </td>
+                                    <td>
+                                        {d.unitPrice.map((item) => ( 
+                                            <p>{item}</p>    
+                                        ))}
+                                    </td>
+                                    
+                                    
                                     <td>{d.salesTax}</td>
                                     <td>{d.shipping}</td>
                                     <td>{d.subtotal}</td>
-                                    <td>{d.total}</td>
+                                    
                                     <td>{d.totalDue}</td>
-                                    <td>{d.unitPrice}</td>
+                                    
                                 </tr>
                                 
                             ))}

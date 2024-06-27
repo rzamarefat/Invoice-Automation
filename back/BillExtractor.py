@@ -41,6 +41,10 @@ class BillExtractor:
 
         full_response = ast.literal_eval(full_response)
         
+        print("==================")
+        print(full_response)
+        print("==================")
+        
         return full_response
 
 # if __name__ == "__main__":
