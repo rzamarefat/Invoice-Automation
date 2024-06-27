@@ -20,5 +20,7 @@ uvicorn main:app --port 8086  --reload
 npm install .
 ```
 - run the following command to start the front-end
-```npm start```
+```
+npm start
+```
  
