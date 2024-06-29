@@ -1,10 +1,12 @@
-from fastapi import FastAPI, File, UploadFile, HTTPException
+from fastapi import FastAPI, File, UploadFile, HTTPException, Form
 from fastapi.responses import JSONResponse, HTMLResponse
 import shutil
 from pathlib import Path
 from fastapi.middleware.cors import CORSMiddleware
 from BillExtractor import BillExtractor
 import sqlite3
+from typing import List, Optional
+from pydantic import BaseModel
 
 be = BillExtractor()
 
@@ -54,10 +56,41 @@ async def upload_pdf(file: UploadFile = File(...)):
 
 
 
+class Address(BaseModel):
+    name: str
+    address: str
+    city: str
+    state: str
+    zipCode: str
+    telephoneNo: str
+
+class Item(BaseModel):
+    billId: str
+    billTo: Address
+    shipTo: Address
+    comments: Optional[str]
+    quantity: List[int]
+    description: List[str]
+    unitPrice: List[float]
+    total: List[float]
+    subtotal: float
+    salesTax: float
+    shipping: float
+    totalDue: float
+
+
+
+
+
 
 @app.post("/add-db/")
-async def add_to_db(data):
-    print(data)
+async def add_to_db(items: List[Item]):
+    for item in items:
+        cursor.execute('''
+        INSERT INTO users (billId,billTo,shipTo,comments,quantity,description,unitPrice,total,subtotal,salesTax,shipping,totalDue)
+        VALUES (?, ?)
+        ''', (item.billId,item.billTo,item.shipTo,item.comments,item.quantity,item.description,item.unitPrice,item.total,item.subtotal,item.salesTax,item.shipping,item.totalDue))
+        conn.commit()
     
     return JSONResponse(content={"data": "added to DB"})
 
@@ -66,7 +99,7 @@ async def add_to_db(data):
 
 
 @app.get("/fetch-db/")
-async def upload_pdf():
+async def fetch_db():
     
     return JSONResponse(content={"data": "data inside the db"})
 

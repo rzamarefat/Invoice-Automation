@@ -9,6 +9,36 @@ const MainPage = () => {
     const headers = useSelector(state => state.headers)
     const isLoaderOn = useSelector(state => state.loaderState)
 
+
+
+    const hanldeAllAddToDB = () => {
+        
+        
+        fetch('http://127.0.0.1:8086/add-db', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(extractedData)
+            })
+              .then((response) => {
+                if (response.ok) {
+                  return response.json();
+                  
+                } else {
+                  throw new Error('Network response was not ok.');
+                  
+                }
+                
+              })
+              .then((data) => {
+                console.log('File uploaded successfully:', data);
+              })
+              .catch((error) => {
+                console.error('Error uploading file:', error);
+              });
+    }
+
     return (
         <>  
             <Navbar/>
@@ -41,7 +71,7 @@ const MainPage = () => {
                 {extractedData.length > 0 && !isLoaderOn && 
                 <div className='d-flex flex-column'>
                     <button className="btn btn-dark my-1" type="button">Add Seelected Items to Database</button>
-                    <button className="btn btn-dark" type="button">Add All Items to Database</button>
+                    <button className="btn btn-dark" type="button" onClick={hanldeAllAddToDB}>Add All Items to Database</button>
                 </div>
                 }
                 
