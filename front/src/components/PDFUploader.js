@@ -62,7 +62,8 @@ const PDFUploader = () => {
         <>
            <div className="file-upload d-flex flex-column justify-content-center align-items-center  p-5">
                 <input type="file" accept="application/pdf" className="form-control" multiple onChange={handleFileChange} />
-                <button className="btn btn-dark" type="button" onClick={handleUpload}>Upload and Analyse</button>
+                {pdfFiles.length > 0 && <button className="btn btn-dark my-5" type="button" onClick={handleUpload}>Upload and Analyse</button>}
+                {pdfFiles.length === 0 && <button className="btn btn-dark my-5" type="button" onClick={handleUpload} disabled>Upload and Analyse</button>}
             </div>
             
         </>

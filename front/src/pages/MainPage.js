@@ -32,10 +32,17 @@ const MainPage = () => {
                     </div>
                 </div>
                 
-                {extractedData.length > 0 && !isLoaderOn && <div className='row container'>
-                    <DataDisplayer allData={extractedData} headers={headers}/>
-
+                {extractedData.length > 0 && !isLoaderOn && 
+                        <div className='row container'>
+                            <DataDisplayer allData={extractedData} headers={headers}/>
                         </div>
+                }
+
+                {extractedData.length > 0 && !isLoaderOn && 
+                <div className='d-flex flex-column'>
+                    <button className="btn btn-dark my-1" type="button">Add Seelected Items to Database</button>
+                    <button className="btn btn-dark" type="button">Add All Items to Database</button>
+                </div>
                 }
                 
             </div>

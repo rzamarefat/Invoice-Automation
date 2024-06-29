@@ -3,7 +3,8 @@ import { Provider } from 'react-redux'
 import Store from './redux/store'
 
 import MainPage from "./pages/MainPage"
-// import PageB from "./pages/PageB"
+import DBPage from "./pages/DBPage"
+
 
 
 const App = () => {
@@ -12,7 +13,7 @@ const App = () => {
             <Router>
                 <Routes>
                     <Route path="/" element={<MainPage />} />
-                    {/* <Route path="/pageb" element={<PageB />} /> */}
+                    <Route path="/db" element={<DBPage />} />
                 </Routes>
             </Router>
         </Provider>

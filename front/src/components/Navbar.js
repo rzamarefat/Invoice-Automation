@@ -1,18 +1,21 @@
+import React from 'react';
+import { Route, Switch, Link } from 'react-router-dom';
+
 const Navbar = () => {
     return (
         <>
             <nav class="navbar navbar-expand-lg navbar-light bg-light">
                 <div className='container'>
-                        <a class="navbar-brand" href="#">Bill Extractor</a>
+                        <Link to="/" className='navbar-brand '>Bill Extractor</Link>
                         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                             <span class="navbar-toggler-icon"></span>
                         </button>
                         <div class="collapse navbar-collapse" id="navbarNav">
-                            <ul class="navbar-nav">
-                            <li class="nav-item active">
-                                <a class="nav-link" href="#">Home</a>
-                            </li>
-                            </ul>
+                            {/* <ul class="navbar-nav">
+                            <li class="nav-item active"> */}
+                            <Link to="/db" className='nav-link'>Database</Link>
+                            {/* </li>
+                            </ul> */}
                         </div>
                 </div>
             </nav>

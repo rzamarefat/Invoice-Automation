@@ -18,7 +18,7 @@ const PDFUploader = ({allData, headers}) => {
                 <table className="table">
                         <thead>
                             <tr>
-                                {/* {headers.map((h) =>(<th>{h}</th>))} */}
+                                <th>Select</th>
                                 <th>Bill ID</th>
                                 <th>Bill To Name</th>
                                 <th>Bill To Address</th>
@@ -42,6 +42,10 @@ const PDFUploader = ({allData, headers}) => {
                         <tbody>
                             {allData.map((d) => (
                                 <tr>
+                                    <td>
+                                        <input type="checkbox" id="" name="" value=""></input>
+                                    </td>
+                                    
                                     <td>{d.billId}</td>
                                     <td>{d.billTo.name}</td>
                                     <td>{d.billTo.address}</td>
@@ -53,9 +57,10 @@ const PDFUploader = ({allData, headers}) => {
                                     
 
                                     <td>
-                                        {d.description.map((item) => ( 
+                                        {d.description.length > 1 && d.description.map((item) => ( 
                                             <p>{item}</p>    
                                         ))}
+                                        {d.description.length === 1 && <p>{d.description}</p>    }
                                     </td>
 
                                     <td>

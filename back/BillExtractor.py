@@ -41,6 +41,9 @@ class BillExtractor:
 
         full_response = ast.literal_eval(full_response)
         
+        for k,v in full_response.items():
+            if k in ["description", "quantity", "total", "unitPrice"] and not(isinstance(v, list)):
+                full_response[k] = [v]
         print("==================")
         print(full_response)
         print("==================")

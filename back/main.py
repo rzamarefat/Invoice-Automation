@@ -4,6 +4,7 @@ import shutil
 from pathlib import Path
 from fastapi.middleware.cors import CORSMiddleware
 from BillExtractor import BillExtractor
+import sqlite3
 
 be = BillExtractor()
 
@@ -16,7 +17,8 @@ origins = [
 
 app = FastAPI()
 
-
+conn = sqlite3.connect('bills.db')
+cursor = conn.cursor()
 
 app.add_middleware(
     CORSMiddleware,
@@ -45,8 +47,28 @@ async def upload_pdf(file: UploadFile = File(...)):
 
     headers = list(data.keys())
 
-    print(headers)
+    
     return JSONResponse(content={"data": data, "headers": headers})
+
+
+
+
+
+
+@app.post("/add-db/")
+async def add_to_db(data):
+    print(data)
+    
+    return JSONResponse(content={"data": "added to DB"})
+
+
+
+
+
+@app.get("/fetch-db/")
+async def upload_pdf():
+    
+    return JSONResponse(content={"data": "data inside the db"})
 
 if __name__ == "__main__":
     import uvicorn
