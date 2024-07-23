@@ -11,11 +11,6 @@ const Navbar = () => {
                             <span class="navbar-toggler-icon"></span>
                         </button>
                         <div class="collapse navbar-collapse" id="navbarNav">
-                            {/* <ul class="navbar-nav">
-                            <li class="nav-item active"> */}
-                            <Link to="/db" className='nav-link'>Database</Link>
-                            {/* </li>
-                            </ul> */}
                         </div>
                 </div>
             </nav>
