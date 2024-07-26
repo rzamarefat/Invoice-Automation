@@ -1,6 +1,9 @@
 # Invoice Analyser
 This project is powered by LLMs (OpenAI GPT) for extracting useful information from some invoice PDF files in a formatted and structured way
 ## Demo
+Watch th following video:
+<a id='demo'>https://youtu.be/og88HsWltI0</a>
+
 ## How to run
 
 1. back
